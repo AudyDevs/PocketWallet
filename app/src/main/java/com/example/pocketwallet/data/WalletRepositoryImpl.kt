@@ -16,9 +16,9 @@ class WalletRepositoryImpl @Inject constructor(
         return response.map { it.toDomain() }
     }
 
-    override suspend fun getWalletId(id: Int): WalletModel {
+    override suspend fun getWalletId(id: Int): WalletModel? {
         val response = walletDao.getWalletID(id)
-        return response.toDomain()
+        return response?.toDomain()
     }
 
     override suspend fun insertWallet(wallet: WalletModel) {
@@ -31,8 +31,7 @@ class WalletRepositoryImpl @Inject constructor(
         walletDao.updateWallet(response)
     }
 
-    override suspend fun deleteWallet(wallet: WalletModel) {
-        val response = wallet.toRoom()
-        walletDao.deleteWallet(response)
+    override suspend fun deleteWallet(id: Int) {
+        walletDao.deleteWallet(id)
     }
 }

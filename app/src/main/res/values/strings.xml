@@ -1,3 +1,56 @@
 <resources>
     <string name="app_name">PocketWallet</string>
+
+    <!--ContentDescription-->
+    <string name="cd_add">Add</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_delete">Delete</string>
+
+    <!--DialogDetail-->
+    <string name="detail_title_amount">Importe:</string>
+    <string name="detail_title_date">Fecha:</string>
+    <string name="detail_title_note">Notas:</string>
+    <string name="detail_button_text_cancel">Cancelar</string>
+    <string name="detail_button_text_delete">Eliminar</string>
+
+    <!--TypeAmount-->
+    <string name="type_shopping">Compras</string>
+    <string name="type_food">Comida</string>
+    <string name="type_restaurant">Restaurantes</string>
+    <string name="type_entertainment">Ocio</string>
+    <string name="type_education">Educación</string>
+    <string name="type_beauty">Belleza</string>
+    <string name="type_sports">Deportes</string>
+    <string name="type_social">Social</string>
+    <string name="type_transport">Transporte</string>
+    <string name="type_clothes">Ropa</string>
+    <string name="type_car">Coche</string>
+    <string name="type_tobacco">Tabaco</string>
+    <string name="type_electronics">Electrónica</string>
+    <string name="type_trips">Viajes</string>
+    <string name="type_health">Salud</string>
+    <string name="type_pet">Mascota</string>
+    <string name="type_repair">Reparación</string>
+    <string name="type_home">Hogar</string>
+    <string name="type_gift">Regalo</string>
+    <string name="type_family">Familia</string>
+
+    <!--TabSelection-->
+    <string name="tab_all">Todo</string>
+    <string name="tab_this_year">Año actual</string>
+    <string name="tab_this_month">Mes actual</string>
+    <string name="tab_minus_month">%1$s de %2$s</string>
+
+    <!--AmountScreen-->
+    <string name="title_update">Modificar</string>
+    <string name="title_save">Agregar</string>
+    <string name="field_note">Nota</string>
+    <string name="field_date">Fecha</string>
+    <string name="field_amount">Importe</string>
+    <string name="text_button_save">Guardar</string>
+    <string name="text_date">Selecciona una fecha…</string>
+
+    <!--DialogDelete-->
+    <string name="title_delete">Eliminar Registro</string>
+    <string name="content_delete">¿Estás seguro de que deseas eliminar este registro?</string>
 </resources>

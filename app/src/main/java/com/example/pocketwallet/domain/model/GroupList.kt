@@ -1,10 +1,12 @@
 package com.example.pocketwallet.domain.model
 
-import java.util.Date
+data class GroupList(
+    val date: String,
+    val items: List<ItemList>
+)
 
-data class WalletModel(
+data class ItemList(
     val id: Int,
-    var date: Date?,
     val type: Int,
     val amount: Float,
     val note: String

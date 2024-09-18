@@ -13,7 +13,7 @@ data class WalletEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "date") val date: Date? = null,
-    @ColumnInfo(name = "type") val type: String = "",
+    @ColumnInfo(name = "type") val type: Int = 0,
     @ColumnInfo(name = "amount") val amount: Float = 0f,
     @ColumnInfo(name = "note") val note: String = ""
 )

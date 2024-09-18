@@ -1,7 +1,6 @@
 package com.example.pocketwallet.data.room.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -15,7 +14,7 @@ interface WalletDao {
     suspend fun getWallets(): List<WalletEntity>
 
     @Query("SELECT * FROM wallet WHERE id = :id")
-    suspend fun getWalletID(id: Int): WalletEntity
+    suspend fun getWalletID(id: Int): WalletEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWallet(wallet: WalletEntity)
@@ -23,6 +22,6 @@ interface WalletDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateWallet(wallet: WalletEntity)
 
-    @Delete
-    suspend fun deleteWallet(wallet: WalletEntity)
+    @Query("DELETE FROM wallet WHERE id = :id")
+    suspend fun deleteWallet(id: Int)
 }
