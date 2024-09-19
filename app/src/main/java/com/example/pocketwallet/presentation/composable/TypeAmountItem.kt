@@ -21,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pocketwallet.core.type.TypeAmount
-import com.example.pocketwallet.presentation.ui.theme.PrimaryVariant
+import com.example.pocketwallet.presentation.ui.theme.Primary
 import com.example.pocketwallet.presentation.ui.theme.SemiTransparentWhite20
 import com.example.pocketwallet.presentation.ui.theme.White
 
@@ -31,7 +31,7 @@ fun TypeAmountItem(
     isSelected: Boolean,
     onTypeSelected: (type: Int) -> Unit
 ) {
-    val backcolorShape = if (isSelected) PrimaryVariant else SemiTransparentWhite20
+    val backcolorShape = if (isSelected) Primary else SemiTransparentWhite20
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier

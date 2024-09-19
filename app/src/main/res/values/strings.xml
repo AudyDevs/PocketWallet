@@ -13,6 +13,11 @@
     <string name="detail_button_text_cancel">Cancelar</string>
     <string name="detail_button_text_delete">Eliminar</string>
 
+    <!--DialogDatePicker-->
+    <string name="date_picker_positive_text">Aceptar</string>
+    <string name="date_picker_negative_text">Cancelar</string>
+    <string name="date_picker_title_text">Selecciona una fecha:</string>
+
     <!--TypeAmount-->
     <string name="type_shopping">Compras</string>
     <string name="type_food">Comida</string>

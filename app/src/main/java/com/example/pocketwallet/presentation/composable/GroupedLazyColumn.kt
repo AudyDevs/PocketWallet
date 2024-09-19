@@ -41,7 +41,8 @@ fun GroupedLazyColumn(
             .padding(horizontal = 6.dp)
     ) {
         LazyColumn(modifier) {
-            group.forEach { group ->
+            val groupSorted = group.sortedByDescending { it.date }
+            groupSorted.forEach { group ->
                 stickyHeader {
                     Text(
                         text = group.date,

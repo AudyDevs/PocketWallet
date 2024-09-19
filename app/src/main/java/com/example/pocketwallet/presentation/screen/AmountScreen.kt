@@ -149,7 +149,7 @@ fun AmountScreen(
                     id = itemSelected,
                     date = date,
                     type = type,
-                    amount = String.format("%.2f", amount).toFloat(),
+                    amount = amount.toFloat(),
                     note = note,
                 )
                 if (itemSelected > 0) {
