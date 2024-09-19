@@ -1,5 +1,7 @@
 package com.example.pocketwallet.presentation.screen
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -38,10 +40,12 @@ import com.example.pocketwallet.presentation.ui.theme.Black
 import com.example.pocketwallet.presentation.ui.theme.Primary
 import com.example.pocketwallet.presentation.ui.theme.White
 import com.example.pocketwallet.presentation.viewmodel.DetailViewModel
+import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AmountScreen(
     itemSelected: Int,
@@ -55,7 +59,7 @@ fun AmountScreen(
     var date by remember { mutableStateOf(Date()) }
     var note by remember { mutableStateOf("") }
     var type by remember { mutableIntStateOf(1) }
-    var showDialogDatePicker by remember { mutableStateOf(false) }
+    val dateDialogState = rememberMaterialDialogState()
     var showDialogDelete by remember { mutableStateOf(false) }
     var firstLoadField by remember { mutableStateOf(false) }
 
@@ -67,11 +71,10 @@ fun AmountScreen(
     val title =
         if (itemSelected > 0) stringResource(id = R.string.title_update) else stringResource(id = R.string.title_save)
 
-    if (showDialogDatePicker) {
-        DialogDatePicker {
-            date = it
-            showDialogDatePicker = false
-        }
+    DialogDatePicker(
+        dateDialogState = dateDialogState
+    ) {
+        date = it
     }
 
     if (showDialogDelete) {
@@ -131,7 +134,7 @@ fun AmountScreen(
         RowDatePicker(
             formatDate = formatDate,
             onPreviewDay = { date = viewModel.previewDay(date) },
-            onDatePickerSelected = { showDialogDatePicker = true },
+            onDatePickerSelected = { dateDialogState.show() },
             onNextDay = { date = viewModel.nextDay(date) }
         )
         Spacer(modifier = Modifier.height(20.dp))

@@ -18,7 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.pocketwallet.core.Dates
 import com.example.pocketwallet.core.type.TabSelection
-import com.example.pocketwallet.core.type.TabSelection.Companion.getTabSelectionById
+import com.example.pocketwallet.core.type.TabSelection.Companion.getTabSelectionByIndex
 import com.example.pocketwallet.presentation.ui.theme.Black
 import com.example.pocketwallet.presentation.ui.theme.Primary
 import com.example.pocketwallet.presentation.ui.theme.White
@@ -29,22 +29,22 @@ fun TabFilter(
     modifier: Modifier,
     onTabSelected: (tabSelection: TabSelection?) -> Unit
 ) {
-    var selectedTabId by remember { mutableIntStateOf(0) }
-    val tabs = TabSelection.entries
+    var selectedTabIndex by remember { mutableIntStateOf(TabSelection.All.indexTab) }
+    val tabs = TabSelection.entries.sortedByDescending { it.id }
     ScrollableTabRow(
-        selectedTabIndex = selectedTabId,
+        selectedTabIndex = selectedTabIndex,
         modifier = modifier.fillMaxWidth(),
         edgePadding = 0.dp,
         containerColor = Black,
         contentColor = White,
         indicator = { tabPositions ->
             TabRowDefaults.Indicator(
-                modifier.tabIndicatorOffset(tabPositions[selectedTabId]),
+                modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
                 color = Primary
             )
         }
     ) {
-        tabs.forEachIndexed { index, tab ->
+        tabs.forEachIndexed { _, tab ->
             val title = if (tab.minusMonth > 0) {
                 val (month, year) = Dates().minusMonth(tab.minusMonth)
                 stringResource(id = tab.titleTab, month, year)
@@ -52,15 +52,15 @@ fun TabFilter(
                 stringResource(id = tab.titleTab)
             }
             Tab(
-                selected = selectedTabId == index,
+                selected = selectedTabIndex == tab.indexTab,
                 onClick = {
-                    selectedTabId = index
-                    onTabSelected(getTabSelectionById(selectedTabId))
+                    selectedTabIndex = tab.indexTab
+                    onTabSelected(getTabSelectionByIndex(selectedTabIndex))
                 },
                 text = {
                     Text(
                         text = title,
-                        color = if (selectedTabId == index) Primary else White
+                        color = if (selectedTabIndex == tab.indexTab) Primary else White
                     )
                 }
             )

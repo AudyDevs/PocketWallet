@@ -30,7 +30,9 @@ import com.example.pocketwallet.presentation.ui.theme.White
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GroupedLazyColumn(
-    group: List<GroupList>, modifier: Modifier, onItemSelected: (Int) -> Unit
+    group: List<GroupList>,
+    modifier: Modifier,
+    onItemSelected: (Int) -> Unit
 ) {
     Box(
         modifier = modifier

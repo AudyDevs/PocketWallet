@@ -33,8 +33,7 @@ fun NavigationWrapper(navHostController: NavHostController) {
             ExpenseScreen(
                 navigateToHome = {
                     navHostController.navigate(NavScreen.Home.route) {
-                        popUpTo(navHostController.graph.startDestinationId) { inclusive = true }
-                        launchSingleTop = true
+                        navHostController.popBackStack()
                     }
                 },
                 navigateToAmount = { itemSelected ->

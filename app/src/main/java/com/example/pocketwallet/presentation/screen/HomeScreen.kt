@@ -28,13 +28,13 @@ fun HomeScreen(
 ) {
     viewModel.getWallets()
     val wallets by viewModel.wallet.collectAsState()
-    val groups by viewModel.groups.collectAsState()
+    val groupsList by viewModel.groupsList.collectAsState()
     var itemSelected by remember { mutableIntStateOf(0) }
     var initialDateFilter by remember { mutableStateOf<Date?>(null) }
     var finalDateFilter by remember { mutableStateOf<Date?>(null) }
 
     if (wallets.isNotEmpty()) {
-        viewModel.getGroups(initialDateFilter, finalDateFilter)
+        viewModel.getGroupsList(initialDateFilter, finalDateFilter)
     }
 
     BasicMenuScreen(modifier = Modifier,
@@ -50,7 +50,7 @@ fun HomeScreen(
         }
     )
     GroupedLazyColumn(
-        group = groups,
+        group = groupsList,
         modifier = Modifier,
         onItemSelected = {
             itemSelected = it

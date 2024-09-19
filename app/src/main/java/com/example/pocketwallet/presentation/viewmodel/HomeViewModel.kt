@@ -3,6 +3,7 @@ package com.example.pocketwallet.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pocketwallet.core.DispatcherProvider
+import com.example.pocketwallet.domain.model.GroupChart
 import com.example.pocketwallet.domain.model.GroupList
 import com.example.pocketwallet.domain.model.ItemList
 import com.example.pocketwallet.domain.model.WalletModel
@@ -26,8 +27,11 @@ class HomeViewModel @Inject constructor(
     private val _wallets = MutableStateFlow<List<WalletModel>>(emptyList())
     val wallet: StateFlow<List<WalletModel>> = _wallets
 
-    private val _groups = MutableStateFlow<List<GroupList>>(emptyList())
-    val groups: StateFlow<List<GroupList>> = _groups
+    private val _groupsList = MutableStateFlow<List<GroupList>>(emptyList())
+    val groupsList: StateFlow<List<GroupList>> = _groupsList
+
+    private val _groupsChart = MutableStateFlow<List<GroupChart>>(emptyList())
+    val groupsChart: StateFlow<List<GroupChart>> = _groupsChart
 
     fun getWallets() {
         viewModelScope.launch {
@@ -37,7 +41,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getGroups(initialDateFilter: Date?, finalDateFilter: Date?) {
+    fun getGroupsList(initialDateFilter: Date?, finalDateFilter: Date?) {
         val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
         val formatWithOutTime = SimpleDateFormat("yyyy-MM-dd'T'00:00:00.000Z")
         _wallets.value.forEach {
@@ -45,17 +49,17 @@ class HomeViewModel @Inject constructor(
         }
 
         val walletsFiltered = if ((initialDateFilter != null) and (finalDateFilter != null)) {
-             _wallets.value.filter {
+            _wallets.value.filter {
                 it.date!!.after(initialDateFilter) and it.date!!.before(
                     finalDateFilter
                 )
             }
-        }else{
+        } else {
             _wallets.value
         }
 
-        var formatSimpleDate = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale("es", "ES"))
-        _groups.value = walletsFiltered
+        val formatSimpleDate = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale("es", "ES"))
+        _groupsList.value = walletsFiltered
             .filter { it.date != null }
             .groupBy { it.date }
             .map { (date, items) ->
@@ -71,6 +75,27 @@ class HomeViewModel @Inject constructor(
                     }
                 )
             }
-        formatSimpleDate = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale("es", "ES"))
+    }
+
+    fun getGroupsChart(initialDateFilter: Date?, finalDateFilter: Date?) {
+        val walletsFiltered = if ((initialDateFilter != null) and (finalDateFilter != null)) {
+            _wallets.value.filter {
+                it.date!!.after(initialDateFilter) and it.date!!.before(
+                    finalDateFilter
+                )
+            }
+        } else {
+            _wallets.value
+        }
+
+        _groupsChart.value = walletsFiltered
+            .filter { it.type > 0 }
+            .groupBy { it.type }
+            .map { (type, items) ->
+                GroupChart(
+                    type = type,
+                    totalAmount = items.map { it.amount }.sum()
+                )
+            }
     }
 }
