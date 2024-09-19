@@ -35,9 +35,6 @@ fun NavigationWrapper(navHostController: NavHostController) {
                     navHostController.navigate(NavScreen.Home.route) {
                         navHostController.popBackStack()
                     }
-                },
-                navigateToAmount = { itemSelected ->
-                    navHostController.navigate(NavScreen.Amount.route + "/${itemSelected}")
                 }
             )
         }

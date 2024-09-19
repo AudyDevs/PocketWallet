@@ -13,7 +13,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.pocketwallet.core.Dates
 import com.example.pocketwallet.core.type.MenuImages
 import com.example.pocketwallet.presentation.composable.BasicMenuScreen
-import com.example.pocketwallet.presentation.composable.FloatingAddButton
 import com.example.pocketwallet.presentation.composable.GroupStats
 import com.example.pocketwallet.presentation.viewmodel.HomeViewModel
 import java.util.Date
@@ -22,7 +21,6 @@ import java.util.Date
 @Composable
 fun ExpenseScreen(
     navigateToHome: () -> Unit,
-    navigateToAmount: (itemSelected: Int) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     viewModel.getWallets()
@@ -50,9 +48,5 @@ fun ExpenseScreen(
     GroupStats(
         groups = groupsChart,
         modifier = Modifier
-    )
-    FloatingAddButton(
-        modifier = Modifier,
-        navigateToAmount = { navigateToAmount(0) }
     )
 }

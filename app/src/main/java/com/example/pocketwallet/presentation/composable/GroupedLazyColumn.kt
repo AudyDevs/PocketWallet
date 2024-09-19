@@ -77,7 +77,7 @@ fun GroupedLazyColumn(
                             Text(
                                 text = title,
                                 color = White,
-                                fontSize = 15.sp,
+                                fontSize = 14.sp,
                                 modifier = modifier
                                     .background(Black)
                                     .weight(1f)
@@ -85,7 +85,7 @@ fun GroupedLazyColumn(
                             Text(
                                 text = "${item.amount} €",
                                 color = White,
-                                fontSize = 15.sp,
+                                fontSize = 14.sp,
                                 modifier = modifier.background(Black)
                             )
                         }
@@ -94,5 +94,4 @@ fun GroupedLazyColumn(
             }
         }
     }
-
 }

@@ -22,11 +22,9 @@ fun GridTypes(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(TypeAmount.entries) { typeAmount ->
-            TypeAmountItem(
-                typeAmount = typeAmount,
+            TypeAmountItem(typeAmount = typeAmount,
                 isSelected = ((type == typeAmount.id)),
-                onTypeSelected = { onTypeSelected(it) }
-            )
+                onTypeSelected = { onTypeSelected(it) })
         }
     }
 }

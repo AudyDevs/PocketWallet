@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.pocketwallet.presentation.ui.theme.SemiTransparentWhite85
 
 @Composable
 fun ButtonDetail(
