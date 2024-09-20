@@ -1,18 +1,22 @@
 [versions]
 agp = "8.3.1"
+coreTesting = "1.1.1"
 datetime = "0.8.1-rc"
 desugar_jdk_libs = "2.1.2"
 hiltAndroid = "2.46"
 hiltNavigationCompose = "1.2.0"
 kotlin = "1.9.0"
+kotlintestRunnerJunit5 = "3.4.2"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
+jetbrainsKotlinxCoroutinesTest = "1.7.3"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
 composeBom = "2023.08.00"
 navigationCompose = "2.7.7"
+mockk = "1.12.3"
 roomKtx = "2.6.1"
 
 [libraries]
@@ -39,6 +43,10 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
+kotlintest-runner-junit5 = { module = "io.kotlintest:kotlintest-runner-junit5", version.ref = "kotlintestRunnerJunit5" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+jetbrains-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "jetbrainsKotlinxCoroutinesTest" }
+core-testing = { module = "android.arch.core:core-testing", version.ref = "coreTesting" }
 
 
 [plugins]

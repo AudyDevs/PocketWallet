@@ -66,6 +66,10 @@ dependencies {
     //Navigation Compose
     implementation(libs.androidx.navigation.compose)
 
+    //DatePicker
+    implementation(libs.datetime)
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -75,12 +79,13 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    //DatePicker
-    implementation(libs.datetime)
-    coreLibraryDesugaring(libs.desugar.jdk.libs)
-
     //Testing
     testImplementation(libs.junit)
+    testImplementation(libs.kotlintest.runner.junit5)
+    testImplementation(libs.mockk)
+    testImplementation(libs.jetbrains.kotlinx.coroutines.test)
+    testImplementation(libs.core.testing)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
