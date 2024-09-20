@@ -62,6 +62,7 @@ fun AmountScreen(
     val dateDialogState = rememberMaterialDialogState()
     var showDialogDelete by remember { mutableStateOf(false) }
     var firstLoadField by remember { mutableStateOf(false) }
+    val enabledButton = ((type > 0) and amount.isNotEmpty())
 
     val format = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale("es", "ES"))
     val formatDate = format.format(date.time).ifEmpty {
@@ -141,6 +142,7 @@ fun AmountScreen(
         ButtonDetail(modifier = Modifier
             .align(Alignment.CenterHorizontally)
             .fillMaxWidth(),
+            enabledButton = enabledButton,
             text = stringResource(id = R.string.text_button_save),
             buttonColor = Primary,
             textColor = White,

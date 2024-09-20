@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ButtonDetail(
     modifier: Modifier,
+    enabledButton: Boolean = true,
     text: String,
     buttonColor: Color,
     textColor: Color,
@@ -18,8 +19,10 @@ fun ButtonDetail(
 ) {
     Button(
         onClick = { onButtonClicked() },
+        enabled = enabledButton,
         colors = ButtonDefaults.buttonColors(
-            containerColor = buttonColor
+            containerColor = buttonColor,
+            disabledContainerColor = Color.Gray
         ),
         modifier = modifier
             .height(36.dp)
