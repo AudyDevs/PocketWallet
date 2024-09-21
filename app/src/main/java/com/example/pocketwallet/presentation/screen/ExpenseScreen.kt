@@ -14,6 +14,7 @@ import com.example.pocketwallet.core.Dates
 import com.example.pocketwallet.core.type.MenuImages
 import com.example.pocketwallet.presentation.composable.BasicMenuScreen
 import com.example.pocketwallet.presentation.composable.GroupStats
+import com.example.pocketwallet.presentation.composable.IconEmptyChart
 import com.example.pocketwallet.presentation.viewmodel.HomeViewModel
 import java.util.Date
 
@@ -45,8 +46,12 @@ fun ExpenseScreen(
             }
         }
     )
-    GroupStats(
-        groups = groupsChart,
-        modifier = Modifier
-    )
+    if (groupsChart.isEmpty()) {
+        IconEmptyChart()
+    } else {
+        GroupStats(
+            groups = groupsChart,
+            modifier = Modifier
+        )
+    }
 }

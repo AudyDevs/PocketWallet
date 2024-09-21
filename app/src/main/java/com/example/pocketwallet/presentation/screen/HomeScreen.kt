@@ -16,6 +16,7 @@ import com.example.pocketwallet.core.type.MenuImages
 import com.example.pocketwallet.presentation.composable.BasicMenuScreen
 import com.example.pocketwallet.presentation.composable.FloatingAddButton
 import com.example.pocketwallet.presentation.composable.GroupedLazyColumn
+import com.example.pocketwallet.presentation.composable.IconEmptyList
 import com.example.pocketwallet.presentation.viewmodel.HomeViewModel
 import java.util.Date
 
@@ -49,14 +50,18 @@ fun HomeScreen(
             }
         }
     )
-    GroupedLazyColumn(
-        group = groupsList,
-        modifier = Modifier,
-        onItemSelected = {
-            itemSelected = it
-            navigateToAmount(itemSelected)
-        }
-    )
+    if (groupsList.isEmpty()) {
+        IconEmptyList()
+    } else {
+        GroupedLazyColumn(
+            group = groupsList,
+            modifier = Modifier,
+            onItemSelected = {
+                itemSelected = it
+                navigateToAmount(itemSelected)
+            }
+        )
+    }
     FloatingAddButton(
         modifier = Modifier,
         navigateToAmount = { navigateToAmount(0) }

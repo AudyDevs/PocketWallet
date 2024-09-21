@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">PocketWallet</string>
+    <string name="empty_list">No hay registros en la lista</string>
+    <string name="empty_chart">No hay registros en la gráfica</string>
 
     <!--ContentDescription-->
     <string name="cd_add">Add</string>

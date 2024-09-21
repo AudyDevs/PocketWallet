@@ -7,14 +7,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.pocketwallet.core.type.TypeAmount.Companion.getTypeAmountById
 import com.example.pocketwallet.domain.model.GroupChart
 import com.example.pocketwallet.presentation.ui.theme.Black
+import com.example.pocketwallet.presentation.ui.theme.White
 
 @Composable
 fun GroupStats(
@@ -45,15 +49,30 @@ fun GroupStats(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(24.dp))
-                AnimatedCircle(
+                Box(
                     modifier = Modifier
                         .height(200.dp)
                         .fillMaxWidth(),
-                    dividerLengthInDegrees = 2.5f,
-                    strokeChart = 32.dp,
-                    proportions = proportions,
-                    colors = colors
-                )
+                    contentAlignment = Alignment.Center
+                ) {
+                    AnimatedCircle(
+                        modifier = Modifier
+                            .height(200.dp)
+                            .fillMaxWidth(),
+                        dividerLengthInDegrees = 2.5f,
+                        strokeChart = 32.dp,
+                        proportions = proportions,
+                        colors = colors
+                    )
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        text = "${String.format("%.2f", totalGroupAmount)} €",
+                        fontWeight = FontWeight.Bold,
+                        color = White
+                    )
+                }
                 Spacer(modifier = Modifier.height(24.dp))
                 TypeAmountLazyColumn(groupsSorted, totalGroupAmount)
             }
